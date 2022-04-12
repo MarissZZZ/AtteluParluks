@@ -11,6 +11,10 @@ myObj.resizable(0, 0)
 def previous():
     global i
     i = i - 1
+    if i==0:
+        btnBack['state'] = DISABLED
+    if i==9:
+        btnForward['state'] = NORMAL
     try:
         image_label.config(image=images[i])
     except:
@@ -20,6 +24,10 @@ def previous():
 def next():
     global i
     i = i + 1
+    if i==1:
+        btnBack['state'] = NORMAL
+    if i==10:
+        btnForward['state'] = DISABLED
     try:
         image_label.config(image=images[i])
     except:
@@ -87,13 +95,13 @@ image_label.pack()
 #myLabel=Label(image=Img1)
 #myLabel.grid(row=0,column=0,columnspan=3)
 
-btnBack=Button(myObj,text='<<',relief=GROOVE,command=previous)
+btnBack=Button(myObj,text='<<',relief=GROOVE,state=DISABLED, command=previous)
 btnBack.pack(side=LEFT, padx=60, pady=5)
 
 btnQuit=Button(myObj,text='IZIET',relief=GROOVE,command=myObj.quit)
-btnQuit.pack(side=LEFT, padx=60, pady=5)
+btnQuit.pack(side=LEFT, padx=200, pady=5)
 
-btnForward=Button(myObj,text='>>',relief=GROOVE,command=next)
+btnForward=Button(myObj,text='>>',relief=GROOVE,state=NORMAL ,command=next)
 btnForward.pack(side=LEFT, padx=60, pady=5)
 
 #btnBack.grid(row=1,column=0)
